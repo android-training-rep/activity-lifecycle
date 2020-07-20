@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ActivityPractice</string>
+    <string name="title">Activity Practices</string>
+    <string name="chooseContacts">Choose Contacts</string>
+</resources>
