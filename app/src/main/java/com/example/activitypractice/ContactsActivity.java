@@ -58,4 +58,8 @@ public class ContactsActivity extends AppCompatActivity {
         }
     }
 
+    public void toEmptyPage(View view) {
+        Intent intent = new Intent(this, TestLifeCycleActivity.class);
+        startActivity(intent);
+    }
 }
