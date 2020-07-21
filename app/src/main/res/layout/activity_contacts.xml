@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ContactsActivity"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:paddingVertical="50dp">
 
     <Button
         android:id="@+id/btn_jump"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:background="@drawable/bg_rounded_corners"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
         android:text="@string/chooseContacts"
         android:textAllCaps="false"
         />
@@ -21,8 +20,8 @@
         android:id="@+id/selectedContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:padding="10dp"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="center"
         android:text=""
         />
-</LinearLayout>
+</FrameLayout>
