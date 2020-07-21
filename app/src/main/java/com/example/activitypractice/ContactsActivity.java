@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ContactsActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class ContactsActivity extends AppCompatActivity {
 
     public void selectContact() {
         Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
+        intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, REQUEST_SELECT_CONTACT);
         }
@@ -41,9 +42,19 @@ public class ContactsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_SELECT_CONTACT && resultCode == RESULT_OK) {
-            // Get the URI and query the content provider for the phone number
             Uri contactUri = data.getData();
-            System.out.println("-----sucuss-----");
+            String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                    ContactsContract.CommonDataKinds.Phone.NUMBER};
+            Cursor cursor = getContentResolver().query(contactUri, projection,
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                int nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                String contactName = cursor.getString(nameIndex);
+                String contactPhone = cursor.getString(numberIndex);
+                TextView textView = (TextView) findViewById(R.id.selectedContact);
+                textView.setText(contactName + " " + contactPhone);
+            }
         }
     }
 
