@@ -20,6 +20,7 @@ public class ContactsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("------ContactsActivity------onCreate()------");
         setContentView(R.layout.activity_contacts);
         jumpBtn = findViewById(R.id.btn_jump);
         jumpBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,5 +62,41 @@ public class ContactsActivity extends AppCompatActivity {
     public void toEmptyPage(View view) {
         Intent intent = new Intent(this, TestLifeCycleActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("------ContactsActivity------onStart()------");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("------ContactsActivity------onRestart()------");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("------ContactsActivity------onResume()------");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("------ContactsActivity------onPause()------");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("------ContactsActivity------onStop()------");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("------ContactsActivity------onDestroy()------");
     }
 }
